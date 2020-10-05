@@ -1,0 +1,67 @@
+﻿<Page x:Class="PageLesson.PageListUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PageLesson"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageListUser">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <WrapPanel Grid.Row="0"  
+                   VerticalAlignment="Center"
+                   Margin="5">
+            <TextBlock Text="Поиск по имени:" 
+                       FontSize="20"
+                       Margin="5 0"
+                      />
+            <TextBox x:Name="searchTXT"
+                     FontSize="20"
+                     Width="200"
+                     Margin="5 0"
+                     TextChanged="SearchTXT_TextChanged"/> 
+            <ComboBox x:Name="ageCMB"
+                      Width="100"
+                      Margin="5 0"/>
+        </WrapPanel>
+        
+        <ListView x:Name="listUser" Grid.Row="1"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+           
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel/>
+                </ItemsPanelTemplate>                
+            </ListView.ItemsPanel>
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <StackPanel>
+                            <Image
+                       Width="100"
+                       Stretch="Uniform" Source="/PageLesson;component/image/userNull.png"/>
+                            
+                            <TextBlock Text="{Binding Path = NameUser}"
+                           FontSize="25"
+                           HorizontalAlignment="Center"
+                           Margin="0 10"/>
+
+                            <TextBlock Text="{Binding Path = AgeUser}"
+                           FontSize="25"
+                           HorizontalAlignment="Center"
+                           Margin="0 10"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+       
+    </Grid>
+</Page>
